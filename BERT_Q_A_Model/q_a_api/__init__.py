@@ -8,5 +8,5 @@ CORS(app)
 from q_a_api.endpoints.ml_endpoints import predict
 
 def main():    
-    app.run(host="0.0.0.0",port=6060)
+    app.run(debug=False)
     print("Server started")
