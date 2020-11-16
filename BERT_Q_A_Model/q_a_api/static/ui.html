@@ -13,8 +13,8 @@
 <body>
 
 <div class="container">
-  <h2>Form control: input</h2>
-  <p>The form below contains two input elements; one of type text and one of type password:</p>
+  <h2>Question and Answer Model Demo</h2>
+  <p>The form below contains two input elements; one for Document and one for Question</p>
   <form id="request-form" role="form">
     <div class="form-group">
       <label for="document">Document:</label>
@@ -26,6 +26,11 @@
       <label for="question">Question:</label>
       <input type="text" class="form-control" id="question" name="question">
     </div>
+
+    <div class="form-group">
+      <p>Answer: <span id ='answer'></span></p>
+    </div>
+
     <button type="submit" id="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
@@ -37,7 +42,7 @@
     contactForm.addEventListener("submit", function(event) {
 
     event.preventDefault();
-
+    $("#answer").text("")
     var request = new XMLHttpRequest();
     var url = "http://localhost:6060/predict";
     request.open("POST", url, true);
@@ -46,6 +51,7 @@
         if (request.readyState === 4 && request.status === 200) {
             var jsonData = JSON.parse(request.response);
             console.log(jsonData);
+            $("#answer").text(jsonData['Answer'])
         }
     };
     var doc =  document.getElementById("document").value;

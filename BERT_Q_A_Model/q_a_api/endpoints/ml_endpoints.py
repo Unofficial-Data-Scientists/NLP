@@ -3,7 +3,7 @@ from flask import jsonify,Response
 from q_a_api.models.q_a_model import q_a_model
 
 
-@app.route("/",methods=["GET"])
+@app.route("/demo",methods=["GET"])
 def home_page():
     return app.send_static_file('ui.html')
 
